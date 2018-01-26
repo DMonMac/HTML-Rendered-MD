@@ -6,10 +6,6 @@ const fs = require('fs');
 const path = require('path');
 const multer  = require('multer');
 
-
-
-var Markdown = require('markdown-to-html').Markdown;
-
 const upload = multer({
   dest: path.join(__dirname, '../public/mdFiles/temp')
 });
@@ -20,7 +16,7 @@ const upload = multer({
 router.get('/', function(req, res, next) {
   res.render('index', {
     title: 'MD to HTML Package Tester',
-    output: 'This will output the converted MD with the selected package'
+    output: '<p>This will output the converted MD with the selected package</p>'
   });
 });
 
@@ -33,8 +29,13 @@ router.get('/mdfile/upload', (req, res) => {
 router.post('/mdfile/upload', upload.single('markdown'), (req, res) => {
   console.log(req.file)
   let fileLoc = req.file.path;
-  let fileToRender = fs.readFileSync(fileLoc, 'utf8');
-  res.send(marked(fileToRender.toString()));
+  let fileToRender = fs.readFileSync(fileLoc);
+  let fileHTMLstring = marked(fileToRender.toString());
+  res.render('index', {
+    title: 'Marked NPM',
+    output: fileHTMLstring
+  });
+  //res.send(marked(fileToRender.toString()));
 });
 
 router.post('/marked', function(req, res){

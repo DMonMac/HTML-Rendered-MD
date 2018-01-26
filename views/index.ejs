@@ -19,22 +19,20 @@
     </br></br>
 
     <div>
-      <h1>Output</h1>
-      <div><%= output %></div>
+      <h2>Render MD file to HTML</h2>
+      <form enctype="multipart/form-data" action="/mdfile/upload" method="POST">
+        <input name="markdown" type="file" required="">
+        <button type="submit">Show HTML</button>
+      </form>
     </div>
     </br></br>
 
     <div>
-      <h2>Render MD file to HTML</h2>
-      <form enctype="multipart/form-data" action="/mdfile/upload" method="POST">
-        <input name="markdown" type="file">
-        <button type="submit">Show HTML</button>
-      </form>
+      <h1>Output</h1>
+      <div id="fileOutput"></div>
+      <%= output %>
     </div>
-
-
-
-
-
+    </br></br>
+    
   </body>
 </html>
