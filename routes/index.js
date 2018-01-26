@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.post('/', function(req, res){
+router.post('/marked', function(req, res){
   // For Marked NPM Package
   console.log("Converting to HTML")
   let HTMLoutput = marked(req.body.mdInput)

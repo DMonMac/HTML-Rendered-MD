@@ -11,20 +11,14 @@
 
     <div>
       <h2>Marked NPM Package</h2>
-      <form id="marked-form" action="/" method="POST">
-        <textarea name="mdInput" rows="5" cols="50">[I](#) \n\n am using __markdown__.</textarea>
+      <form id="marked-form" action="/marked" method="POST">
+        <textarea name="mdInput" rows="5" cols="50">[I](#) am using __markdown__.</textarea>
         <button type="submit">Convert to HTML</button>
       </form>
     </div>
     </br></br>
 
-    <!--div>
-      <h2>markdown-to-html NPM Package</h2>
-      <input name="mdFile" type="file">
-    </div>
-    </br></br>
-
-    <div-->
+    <div>
       <h1>Output</h1>
       <textarea rows="5" cols="50"><%= output %></textarea>
     </div>
