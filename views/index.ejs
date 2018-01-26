@@ -20,8 +20,21 @@
 
     <div>
       <h1>Output</h1>
-      <textarea rows="5" cols="50"><%= output %></textarea>
+      <div><%= output %></div>
     </div>
+    </br></br>
+
+    <div>
+      <h2>Render MD file to HTML</h2>
+      <form enctype="multipart/form-data" action="/mdfile/upload" method="POST">
+        <input name="markdown" type="file">
+        <button type="submit">Show HTML</button>
+      </form>
+    </div>
+
+
+
+
 
   </body>
 </html>
