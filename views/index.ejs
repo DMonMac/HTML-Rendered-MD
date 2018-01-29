@@ -11,8 +11,8 @@
 
     <div>
       <h2>Render MD formatting to HTML</h2>
-      <form id="marked-form" action="/marked" method="POST">
-        <textarea name="mdInput" rows="5" cols="50">[I](#) am using __markdown__.</textarea>
+      <form id="marked-form" action="/" method="POST">
+        <textarea name="mdInput" rows="5" cols="50" placeholder="Input text with markdown format"><%= sample %></textarea>
         <button type="submit">Render to HTML</button>
       </form>
     </div>
@@ -29,7 +29,6 @@
 
     <div>
       <h1>Output</h1>
-      <h2>Output follows the app's styling: </h2>
       <div id="fileOutput"><%- output %></div>
     </div>
     </br></br>

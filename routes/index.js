@@ -11,7 +11,9 @@ const upload = multer({
   dest: path.join(__dirname, '../uploads/mdFiles/temp/')
 });
 
-// Imported Controllers
+// Reusable constants
+const samplePath = __dirname + '/../README.md';
+const sampleFile = fs.readFileSync(samplePath, 'utf8');
 
 // Repeated functions
 function deleteLastUpload() { // Delete file/s from a folder
@@ -29,24 +31,36 @@ function deleteLastUpload() { // Delete file/s from a folder
   });
 }
 
-// Routes
+// Imported Controllers
 
-/* GET home page. */
+// Routes
+/* '/' HTTP methods */
 router.get('/', function(req, res, next) {
+  deleteLastUpload();
   res.render('index', {
     title: 'Marked MD to HTML Renderer',
-    output: '<p>This will show the markdown rendered in HTML</p>'
+    output: '<h3>This will show the markdown rendered into the HTML</h3>',
+    sample: sampleFile.toString()
   });
 });
 
-router.get('/mdfile/upload', (req, res) => {
-  deleteLastUpload();
-  let samplePath = __dirname + '/../uploads/mdFiles/Sample.md';
-  let file = fs.readFileSync(samplePath, 'utf8');
-  sampleFile = marked(file.toString());
+router.post('/', function(req, res){
+  console.log("Converting to HTML...")
+  let HTMLoutput = marked(req.body.mdInput)
   res.render('index', {
     title: 'Marked MD to HTML Renderer',
-    output: sampleFile
+    output: HTMLoutput,
+    sample: null
+  });
+})
+
+/* '/mdfile/upload' HTTP methods */
+router.get('/mdfile/upload', (req, res) => {
+  deleteLastUpload();
+  res.render('index', {
+    title: 'Marked MD to HTML Renderer',
+    output: marked(sampleFile.toString()),
+    sample: null
   });
 });
 
@@ -58,18 +72,9 @@ router.post('/mdfile/upload', upload.single('markdown'), (req, res) => {
   let fileHTMLstring = marked(fileToRender.toString());
   res.render('index', {
     title: 'Marked MD to HTML Renderer',
-    output: fileHTMLstring
+    output: fileHTMLstring,
+    sample: null
   });
 });
-
-router.post('/marked', function(req, res){
-  // For Marked NPM Package
-  console.log("Converting to HTML")
-  let HTMLoutput = marked(req.body.mdInput)
-  res.render('index', {
-    title: 'Marked MD to HTML Renderer',
-    output: HTMLoutput
-  });
-})
 
 module.exports = router;

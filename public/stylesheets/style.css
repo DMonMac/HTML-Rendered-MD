@@ -32,3 +32,10 @@ ol, ul {
   list-style-type: none;
 
 }
+
+code {
+  background-color: #84c0ff;
+  border-radius: 0.5vh;
+  padding: 0.5vh;
+  color: blue;
+}
