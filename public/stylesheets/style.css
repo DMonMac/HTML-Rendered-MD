@@ -11,6 +11,7 @@ a {
   width: 75%;
   text-align: center;
   margin: 0 auto;
+  line-height: 4vh;
 }
 
 table, th, td {
