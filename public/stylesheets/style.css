@@ -4,5 +4,31 @@ body {
 }
 
 a {
-  color: #000;
+  color: #0079ff;
+}
+
+#fileOutput {
+  width: 75%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+table, th, td {
+  border: 0.25vh solid #111;
+  padding: 1vh;
+  margin: inherit;
+
+}
+
+img {
+  max-width: 100%;
+  min-width: auto;
+}
+
+ol, ul {
+  width: fit-content;
+  text-align: left;
+  margin: inherit;
+  list-style-type: none;
+
 }

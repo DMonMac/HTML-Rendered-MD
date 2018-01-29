@@ -10,10 +10,10 @@
     <p>Welcome to <%= title %></p>
 
     <div>
-      <h2>Marked NPM Package</h2>
+      <h2>Render MD formatting to HTML</h2>
       <form id="marked-form" action="/marked" method="POST">
         <textarea name="mdInput" rows="5" cols="50">[I](#) am using __markdown__.</textarea>
-        <button type="submit">Convert to HTML</button>
+        <button type="submit">Render to HTML</button>
       </form>
     </div>
     </br></br>
@@ -22,17 +22,16 @@
       <h2>Render MD file to HTML</h2>
       <form enctype="multipart/form-data" action="/mdfile/upload" method="POST">
         <input name="markdown" type="file" required="">
-        <button type="submit">Show HTML</button>
+        <button type="submit">Render to HTML</button>
       </form>
     </div>
     </br></br>
 
     <div>
       <h1>Output</h1>
-      <div id="fileOutput"></div>
-      <%= output %>
+      <h2>Output follows the app's styling: </h2>
+      <div id="fileOutput"><%- output %></div>
     </div>
     </br></br>
-    
   </body>
 </html>
